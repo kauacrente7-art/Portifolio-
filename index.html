@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kauã Gonçalves • Portfólio</title>
+  <style>
+    /* RESET */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* HEADER */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(180deg, #000 40%, #111);
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1.5s ease forwards;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #d1d1d6;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1.5s ease forwards 0.4s;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      color: #a1a1a6;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 6rem auto;
+      max-width: 1200px;
+      padding: 0 2rem;
+    }
+
+    .gallery img {
+      border-radius: 16px;
+      width: 100%;
+      max-width: 350px;
+      height: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      margin: 6rem auto;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .contact h2 {font-size: 2rem; margin-bottom: 1rem;}
+
+    .contact a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s;
+    }
+
+    .contact a.instagram {
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    }
+    .contact a.whatsapp {
+      background: #25d366;
+    }
+    .contact a:hover {transform: scale(1.05);}
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #a1a1a6;
+      background: #111;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* SCROLL REVEAL */
+    .reveal.active {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {font-size: 2.2rem;}
+      .about h2 {font-size: 2rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kauã Gonçalves</h1>
+    <p>Editor de Vídeo • Criador de Conteúdo</p>
+  </header>
+
+  <section class="about reveal">
+    <h2>Sobre mim</h2>
+    <p>
+      Sou editor de vídeo apaixonado por contar histórias através de imagens.  
+      Transformo ideias em narrativas visuais envolventes, com ritmo, emoção e impacto.  
+      Meu objetivo é criar conteúdos que conectam pessoas e marcas.
+    </p>
+  </section>
+
+  <section class="gallery">
+    <img class="reveal" src="foto1.jpg" alt="Foto Kauã 1">
+    <img class="reveal" src="foto2.jpg" alt="Foto Kauã 2">
+    <img class="reveal" src="foto3.jpg" alt="Foto Kauã 3">
+  </section>
+
+  <section class="contact reveal">
+    <h2>Conecte-se comigo</h2>
+    <a class="instagram" href="https://www.instagram.com/kaua_goncalves_ofc" target="_blank">Instagram</a>
+    <a class="whatsapp" href="https://wa.me/5511961764789" target="_blank">WhatsApp</a>
+  </section>
+
+  <footer>
+    © 2025 Kauã Gonçalves. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Scroll Reveal
+    const reveals = document.querySelectorAll('.reveal');
+    window.addEventListener('scroll', () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
