@@ -1,46 +1,230 @@
-<header>
-  <h1>Kauã Gonçalves</h1>
-  <p>Editor de Vídeo Profissional • Criador de Conteúdo Estratégico</p>
-</header>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kauã Gonçalves • Portfólio</title>
+  <style>
+    /* RESET */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-<style>
-header h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 2px solid #fff;
-  width: 0ch;
-  color: #fff;
-  text-shadow: 0 0 15px rgba(255,255,255,0.3);
-  animation: typing 1.5s steps(16) forwards, blink 0.7s infinite, fadeSlide 1s ease forwards 0s;
-}
+    /* HEADER */
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(180deg, #000 40%, #111);
+      padding: 0 1rem;
+    }
 
-@keyframes typing {
-  from { width: 0ch; }
-  to { width: 16ch; }
-}
+    /* H1 com efeito 3D e digitação */
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      width: 0ch;
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080;
+      animation: typing 1.5s steps(16) forwards, blink 0.7s infinite, float3d 3s ease-in-out infinite alternate;
+    }
 
-@keyframes blink {
-  50% { border-color: transparent; }
-}
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: 16ch; }
+    }
 
-@keyframes fadeSlide {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
 
-header p {
-  font-size: 1.3rem;
-  margin-top: 1rem;
-  color: #d1d1d6;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1.5s ease forwards 1.6s;
-  max-width: 600px;
-}
+    /* Animação 3D leve flutuante */
+    @keyframes float3d {
+      0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+      50% { transform: translateY(-5px) rotateX(2deg) rotateY(3deg); }
+      100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+    }
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0);}
-}
-</style>
+    header p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #d1d1d6;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1.5s ease forwards 1.6s;
+      max-width: 600px;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      color: #a1a1a6;
+      line-height: 1.7;
+    }
+
+    /* PORTFÓLIO */
+    .portfolio {
+      max-width: 1000px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .portfolio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .portfolio img {
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .portfolio img.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      margin: 6rem auto;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .contact h2 {font-size: 2rem; margin-bottom: 1rem;}
+
+    .contact a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .contact a.instagram {
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    }
+    .contact a.whatsapp {
+      background: #25d366;
+    }
+    .contact a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #a1a1a6;
+      background: #111;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* SCROLL REVEAL */
+    .reveal.active {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {font-size: 2.2rem;}
+      .about h2 {font-size: 2rem;}
+      .portfolio h2 {font-size: 2rem;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kauã Gonçalves</h1>
+    <p>Editor de Vídeo Profissional • Criador de Conteúdo Estratégico</p>
+  </header>
+
+  <section class="about reveal">
+    <h2>Sobre mim</h2>
+    <p>
+      Sou editor de vídeo especializado em transformar ideias em narrativas visuais impactantes.  
+      Minha missão é criar produções que unem estética, ritmo e propósito — ajudando marcas,  
+      criadores e negócios a transmitirem suas mensagens de forma clara, envolvente e memorável.  
+      Cada corte, efeito e transição é pensado para gerar emoção e conexão real com o público.
+    </p>
+  </section>
+
+  <section class="portfolio">
+    <h2>Portfólio em Destaque</h2>
+    <img class="reveal" src="IMG_3994.jpeg" alt="Trabalho em destaque de Kauã">
+    <p style="margin-top:1.5rem; color:#a1a1a6; font-size:1.1rem;">
+      Projetos desenvolvidos com foco em storytelling, dinamismo e identidade visual.  
+      Este é apenas um dos meus trabalhos — cada produção é única, feita sob medida para destacar o melhor de cada cliente.
+    </p>
+  </section>
+
+  <section class="contact reveal">
+    <h2>Conecte-se comigo</h2>
+    <a class="instagram" href="https://www.instagram.com/kaua_goncalves_ofc" target="_blank">Instagram</a>
+    <a class="whatsapp" href="https://wa.me/5511961764789" target="_blank">WhatsApp</a>
+  </section>
+
+  <footer>
+    © 2025 Kauã Gonçalves. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Scroll Reveal
+    const reveals = document.querySelectorAll('.reveal, .portfolio img');
+    window.addEventListener('scroll', () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
