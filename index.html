@@ -36,6 +36,8 @@
       width: 0ch;
       color: #fff;
       animation: typing 1.5s steps(16) forwards, blink 0.7s infinite, float3d 3s ease-in-out infinite alternate;
+      /* Ajuste do cursor */
+      padding-right: 0.1em;
     }
 
     @keyframes typing {
@@ -44,6 +46,7 @@
     }
 
     @keyframes blink {
+      0%, 100% { border-color: #fff; }
       50% { border-color: transparent; }
     }
 
