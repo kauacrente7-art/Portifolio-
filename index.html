@@ -24,6 +24,7 @@
       text-align: center;
       background: linear-gradient(180deg, #000 40%, #111);
       padding: 0 1rem;
+      position: relative;
     }
 
     header h1 {
@@ -33,12 +34,12 @@
       overflow: hidden;
       border-right: 3px solid #fff;
       width: 0ch;
-      animation: typing 3s steps(20) forwards, blink 0.7s infinite;
+      animation: typing 2s steps(20) forwards, blink 0.7s infinite;
     }
 
     @keyframes typing {
       from { width: 0ch; }
-      to { width: 16ch; } /* ajuste ao tamanho do texto */
+      to { width: 16ch; }
     }
 
     @keyframes blink {
@@ -51,8 +52,61 @@
       color: #d1d1d6;
       opacity: 0;
       transform: translateY(40px);
-      animation: fadeUp 1.5s ease forwards 3.2s;
+      animation: fadeUp 1.5s ease forwards 2.2s;
       max-width: 600px;
+    }
+
+    /* BUTTON HEADER */
+    .btn-card {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      color: #fff;
+      background: linear-gradient(45deg, #ff4b1f, #1fddff);
+      cursor: pointer;
+      border: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    }
+
+    /* CARD SOBRE MIM */
+    .card {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 90%;
+      max-width: 500px;
+      background: #111;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+      color: #fff;
+      text-align: center;
+      z-index: 999;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .card button.close-card {
+      margin-top: 1.5rem;
+      padding: 0.7rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      background: #ff4b1f;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
     }
 
     /* ABOUT */
@@ -66,16 +120,8 @@
       transition: all 1s ease;
     }
 
-    .about h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .about p {
-      font-size: 1.2rem;
-      color: #a1a1a6;
-      line-height: 1.7;
-    }
+    .about h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .about p { font-size: 1.2rem; color: #a1a1a6; line-height: 1.7; }
 
     /* PORTFÓLIO */
     .portfolio {
@@ -85,11 +131,7 @@
       text-align: center;
     }
 
-    .portfolio h2 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-    }
-
+    .portfolio h2 { font-size: 2.5rem; margin-bottom: 2rem; }
     .portfolio img {
       border-radius: 16px;
       width: 100%;
@@ -101,10 +143,7 @@
       transition: all 1s ease;
     }
 
-    .portfolio img.active {
-      transform: scale(1);
-      opacity: 1;
-    }
+    .portfolio img.active { transform: scale(1); opacity: 1; }
 
     /* CONTACT */
     .contact {
@@ -115,8 +154,7 @@
       transition: all 1s ease;
     }
 
-    .contact h2 {font-size: 2rem; margin-bottom: 1rem;}
-
+    .contact h2 { font-size: 2rem; margin-bottom: 1rem; }
     .contact a {
       display: inline-block;
       margin: 0.5rem;
@@ -129,16 +167,9 @@
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .contact a.instagram {
-      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-    }
-    .contact a.whatsapp {
-      background: #25d366;
-    }
-    .contact a:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-    }
+    .contact a.instagram { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+    .contact a.whatsapp { background: #25d366; }
+    .contact a:hover { transform: scale(1.08); box-shadow: 0 8px 20px rgba(0,0,0,0.6); }
 
     /* FOOTER */
     footer {
@@ -150,20 +181,12 @@
     }
 
     /* ANIMATIONS */
-    @keyframes fadeUp {
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    /* SCROLL REVEAL */
-    .reveal.active {
-      opacity: 1 !important;
-      transform: translateY(0) scale(1) !important;
-    }
+    @keyframes fadeUp { to {opacity: 1; transform: translateY(0);} }
+    .reveal.active { opacity: 1 !important; transform: translateY(0) scale(1) !important; }
 
     @media (max-width: 768px) {
       header h1 {font-size: 2.2rem;}
-      .about h2 {font-size: 2rem;}
-      .portfolio h2 {font-size: 2rem;}
+      .about h2, .portfolio h2 {font-size: 2rem;}
     }
   </style>
 </head>
@@ -171,14 +194,23 @@
   <header>
     <h1>Kauã Gonçalves</h1>
     <p>Editor de Vídeo Profissional • Criador de Conteúdo Estratégico</p>
+    <button class="btn-card">Saiba mais</button>
   </header>
+
+  <!-- CARD SOBRE MIM -->
+  <div class="card" id="cardInfo">
+    <h2>Sobre Kauã</h2>
+    <p>
+      Sou editor de vídeo especializado em transformar ideias em narrativas visuais impactantes.  
+      Minha missão é criar produções que unem estética, ritmo e propósito — ajudando marcas,  
+      criadores e negócios a transmitirem suas mensagens de forma clara, envolvente e memorável.
+    </p>
+    <button class="close-card">Fechar</button>
+  </div>
 
   <section class="about reveal">
     <h2>Sobre mim</h2>
     <p>
-      Sou editor de vídeo especializado em transformar ideias em narrativas visuais impactantes.  
-      Minha missão é criar produções que unem estética, ritmo e propósito — ajudando marcas,  
-      criadores e negócios a transmitirem suas mensagens de forma clara, envolvente e memorável.  
       Cada corte, efeito e transição é pensado para gerar emoção e conexão real com o público.
     </p>
   </section>
@@ -188,7 +220,7 @@
     <img class="reveal" src="IMG_3994.jpeg" alt="Trabalho em destaque de Kauã">
     <p style="margin-top:1.5rem; color:#a1a1a6; font-size:1.1rem;">
       Projetos desenvolvidos com foco em storytelling, dinamismo e identidade visual.  
-      Este é apenas um dos meus trabalhos — cada produção é única, feita sob medida para destacar o melhor de cada cliente.
+      Cada produção é única, feita sob medida para destacar o melhor de cada cliente.
     </p>
   </section>
 
@@ -215,6 +247,14 @@
         }
       }
     });
+
+    // CARD
+    const btnCard = document.querySelector('.btn-card');
+    const card = document.getElementById('cardInfo');
+    const closeCard = document.querySelector('.close-card');
+
+    btnCard.addEventListener('click', () => card.classList.add('active'));
+    closeCard.addEventListener('click', () => card.classList.remove('active'));
   </script>
 </body>
 </html>
