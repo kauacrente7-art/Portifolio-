@@ -23,6 +23,7 @@
       align-items: center;
       text-align: center;
       background: linear-gradient(180deg, #000 40%, #111);
+      padding: 0 1rem;
     }
 
     header h1 {
@@ -40,6 +41,7 @@
       opacity: 0;
       transform: translateY(40px);
       animation: fadeUp 1.5s ease forwards 0.4s;
+      max-width: 600px;
     }
 
     /* ABOUT */
@@ -61,26 +63,29 @@
     .about p {
       font-size: 1.2rem;
       color: #a1a1a6;
+      line-height: 1.7;
     }
 
-    /* GALLERY */
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
+    /* PORTFÓLIO */
+    .portfolio {
+      max-width: 1000px;
       margin: 6rem auto;
-      max-width: 1200px;
       padding: 0 2rem;
+      text-align: center;
     }
 
-    .gallery img {
+    .portfolio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .portfolio img {
       border-radius: 16px;
       width: 100%;
-      max-width: 350px;
+      max-width: 600px;
       height: auto;
       box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-      transform: scale(0.9);
+      transform: scale(0.95);
       opacity: 0;
       transition: all 1s ease;
     }
@@ -139,28 +144,33 @@
     @media (max-width: 768px) {
       header h1 {font-size: 2.2rem;}
       .about h2 {font-size: 2rem;}
+      .portfolio h2 {font-size: 2rem;}
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Kauã Gonçalves</h1>
-    <p>Editor de Vídeo • Criador de Conteúdo</p>
+    <p>Editor de Vídeo Profissional • Criador de Conteúdo Estratégico</p>
   </header>
 
   <section class="about reveal">
     <h2>Sobre mim</h2>
     <p>
-      Sou editor de vídeo apaixonado por contar histórias através de imagens.  
-      Transformo ideias em narrativas visuais envolventes, com ritmo, emoção e impacto.  
-      Meu objetivo é criar conteúdos que conectam pessoas e marcas.
+      Sou editor de vídeo especializado em transformar ideias em narrativas visuais impactantes.  
+      Minha missão é criar produções que unem estética, ritmo e propósito — ajudando marcas,  
+      criadores e negócios a transmitirem suas mensagens de forma clara, envolvente e memorável.  
+      Cada corte, efeito e transição é pensado para gerar emoção e conexão real com o público.
     </p>
   </section>
 
-  <section class="gallery">
-    <img class="reveal" src="IMG_3994.jpeg" alt="Foto Kauã 1">
-    <img class="reveal" src="IMG_3981.jpeg" alt="Foto Kauã 2">
-    <img class="reveal" src="IMG_4004.jpeg" alt="Foto Kauã 3">
+  <section class="portfolio">
+    <h2>Portfólio em Destaque</h2>
+    <img class="reveal" src="IMG_3994.jpeg" alt="Trabalho em destaque de Kauã">
+    <p style="margin-top:1.5rem; color:#a1a1a6; font-size:1.1rem;">
+      Projetos desenvolvidos com foco em storytelling, dinamismo e identidade visual.  
+      Este é apenas um dos meus trabalhos — cada produção é única, feita sob medida para destacar o melhor de cada cliente.
+    </p>
   </section>
 
   <section class="contact reveal">
