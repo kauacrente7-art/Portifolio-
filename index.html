@@ -3,154 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Kauã</title>
+  <title>Kauã Gonçalves • Portfólio</title>
   <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-    }
-
+    /* RESET */
+    * {margin: 0; padding: 0; box-sizing: border-box;}
     body {
-      background-color: #0a0a0a;
-      color: #f5f5f5;
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
     }
 
+    /* HEADER */
     header {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(135deg, #000, #111, #000);
       text-align: center;
+      background: linear-gradient(180deg, #000 40%, #111);
+      padding: 0 1rem;
     }
 
-    h1 {
+    header h1 {
       font-size: 3.5rem;
-      font-weight: bold;
-      color: #fff;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid #fff;
+      width: 0ch;
+      animation: typing 3s steps(20) forwards, blink 0.7s infinite;
     }
 
-    h1 span {
-      border-right: 3px solid #fff;
-      padding-right: 5px;
-      animation: blink 0.7s infinite;
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: 16ch; } /* ajuste ao tamanho do texto */
     }
 
     @keyframes blink {
       50% { border-color: transparent; }
     }
 
-    p {
-      font-size: 1.2rem;
-      margin-top: 15px;
-      color: #bbb;
+    header p {
+      font-size: 1.3rem;
+      margin-top: 1rem;
+      color: #d1d1d6;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1.5s ease forwards 3.2s;
+      max-width: 600px;
     }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    h2 {
-      font-size: 2rem;
+    /* ABOUT */
+    .about {
+      max-width: 900px;
+      margin: 6rem auto;
+      padding: 0 2rem;
       text-align: center;
-      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .about p {
+      font-size: 1.2rem;
+      color: #a1a1a6;
+      line-height: 1.7;
+    }
+
+    /* PORTFÓLIO */
+    .portfolio {
+      max-width: 1000px;
+      margin: 6rem auto;
+      padding: 0 2rem;
+      text-align: center;
+    }
+
+    .portfolio h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .portfolio img {
+      border-radius: 16px;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      transform: scale(0.9);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+
+    .portfolio img.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* CONTACT */
+    .contact {
+      text-align: center;
+      margin: 6rem auto;
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s ease;
+    }
+
+    .contact h2 {font-size: 2rem; margin-bottom: 1rem;}
+
+    .contact a {
+      display: inline-block;
+      margin: 0.5rem;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
       color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+    .contact a.instagram {
+      background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+    }
+    .contact a.whatsapp {
+      background: #25d366;
+    }
+    .contact a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
     }
 
-    .card {
-      background: #111;
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.4s, box-shadow 0.4s;
-      cursor: pointer;
-      perspective: 1000px;
-    }
-
-    .card:hover {
-      transform: rotateY(10deg) rotateX(10deg) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-    }
-
-    .card h3 {
-      color: #fff;
-      margin-bottom: 15px;
-    }
-
-    .card p {
-      color: #aaa;
-    }
-
+    /* FOOTER */
     footer {
       text-align: center;
-      padding: 20px;
-      color: #777;
-      border-top: 1px solid #222;
-      margin-top: 40px;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #a1a1a6;
+      background: #111;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* SCROLL REVEAL */
+    .reveal.active {
+      opacity: 1 !important;
+      transform: translateY(0) scale(1) !important;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {font-size: 2.2rem;}
+      .about h2 {font-size: 2rem;}
+      .portfolio h2 {font-size: 2rem;}
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1 id="typing"></h1>
-    <p>Desenvolvedor | Criador de Conteúdo | Visionário</p>
+    <h1>Kauã Gonçalves</h1>
+    <p>Editor de Vídeo Profissional • Criador de Conteúdo Estratégico</p>
   </header>
 
-  <section>
-    <h2>Sobre Mim</h2>
-    <p>Sou Kauã, apaixonado por tecnologia, design e comunicação estratégica. 
-       Este portfólio é o reflexo da minha jornada para criar projetos impactantes e memoráveis.</p>
+  <section class="about reveal">
+    <h2>Sobre mim</h2>
+    <p>
+      Sou editor de vídeo especializado em transformar ideias em narrativas visuais impactantes.  
+      Minha missão é criar produções que unem estética, ritmo e propósito — ajudando marcas,  
+      criadores e negócios a transmitirem suas mensagens de forma clara, envolvente e memorável.  
+      Cada corte, efeito e transição é pensado para gerar emoção e conexão real com o público.
+    </p>
   </section>
 
-  <section>
-    <h2>Projetos</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Projeto 1</h3>
-        <p>Descrição breve do projeto com foco em design moderno e funcionalidade.</p>
-      </div>
-      <div class="card">
-        <h3>Projeto 2</h3>
-        <p>Outro exemplo de trabalho, destacando criatividade e soluções inovadoras.</p>
-      </div>
-      <div class="card">
-        <h3>Projeto 3</h3>
-        <p>Mais um projeto impactante, desenvolvido com excelência e estratégia.</p>
-      </div>
-    </div>
+  <section class="portfolio">
+    <h2>Portfólio em Destaque</h2>
+    <img class="reveal" src="IMG_3994.jpeg" alt="Trabalho em destaque de Kauã">
+    <p style="margin-top:1.5rem; color:#a1a1a6; font-size:1.1rem;">
+      Projetos desenvolvidos com foco em storytelling, dinamismo e identidade visual.  
+      Este é apenas um dos meus trabalhos — cada produção é única, feita sob medida para destacar o melhor de cada cliente.
+    </p>
+  </section>
+
+  <section class="contact reveal">
+    <h2>Conecte-se comigo</h2>
+    <a class="instagram" href="https://www.instagram.com/kaua_goncalves_ofc" target="_blank">Instagram</a>
+    <a class="whatsapp" href="https://wa.me/5511961764789" target="_blank">WhatsApp</a>
   </section>
 
   <footer>
-    <p>&copy; 2025 Kauã - Todos os direitos reservados.</p>
+    © 2025 Kauã Gonçalves. Todos os direitos reservados.
   </footer>
 
   <script>
-    // Efeito de digitação no nome
-    const text = "Kauã Crente7";
-    let i = 0;
-    function typingEffect() {
-      if (i < text.length) {
-        document.getElementById("typing").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typingEffect, 120);
+    // Scroll Reveal
+    const reveals = document.querySelectorAll('.reveal, .portfolio img');
+    window.addEventListener('scroll', () => {
+      for (let i = 0; i < reveals.length; i++) {
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const elementVisible = 100;
+        if (elementTop < windowHeight - elementVisible) {
+          reveals[i].classList.add('active');
+        }
       }
-    }
-    typingEffect();
+    });
   </script>
-
 </body>
 </html>
